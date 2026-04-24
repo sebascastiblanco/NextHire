@@ -1,11 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function Login() {
 
     const [usuario, setUsuario] = useState("");
     const [correo, setCorreo] = useState("");
     const [contrasena, setContrasena] = useState("");
+    const [rol, setRol] = useState("");
     const [mensaje, setMensaje] = useState("");
     const [error, setError] = useState(false);
 
@@ -18,7 +20,8 @@ function Login() {
             const creacion_usuario = await axios.post("http://localhost:3000/registrar", {
                 usuario,
                 correo,
-                contrasena
+                contrasena,
+                rol
             });
 
             const respuestaBack = creacion_usuario.data;
@@ -52,14 +55,20 @@ return (
             <p>Registrate para iniciar sesion</p>
 
 
-            <form onSubmit={envioRegistro}>
+            <form onSubmit={envioRegistro} >
                 <label htmlFor="usuario">Nombre usuario:</label><br />
                 <input type="text" id="usuario" value={usuario} onChange={(e) => setUsuario(e.target.value)} placeholder="Ej: Jose" required></input><br />
                 <label htmlFor="correo">Correo electronico:</label><br />
                 <input type="email" id="correo" value={correo} onChange={(e) => setCorreo(e.target.value)} placeholder="Ej: Jose@outlook.com" required></input><br />
                 <label htmlFor="contrasena">Contraseña:</label><br />
                 <input type="password" id="contrasena" value={contrasena} onChange={(e) => setContrasena(e.target.value)} required></input><br />
-                <label htmlFor="inicio">Si ya tienes cuenta, <a href="./Inicio.jsx">Inicia sesion</a></label><br />
+                <label htmlFor="rol">Rol:</label><br />
+                    <select value={rol} id="rol" onChange={(e) => setRol(e.target.value)} required>
+                        <option value=""> -- Selecciona un Rol --</option>
+                        <option value="Trabajador">Trabajador</option>
+                        <option value="Contratista">Contratista</option>
+                    </select><br />
+                <p htmlFor="inicio">Si ya tienes cuenta, <Link to="/inicio">Inicia sesion</Link></p><br />
                 <button type="submit">Registrarse</button>
             </form>
 

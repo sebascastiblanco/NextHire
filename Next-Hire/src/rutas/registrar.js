@@ -9,7 +9,7 @@ router.post("/registrar", async (req, res) => {
 
     try {
 
-        const { usuario, correo, contrasena } = req.body;
+        const { usuario, correo, contrasena, rol } = req.body;
 
         if (!usuario || !correo || !contrasena) {
             console.log("Todos los campos son obligatorios");
@@ -26,7 +26,7 @@ router.post("/registrar", async (req, res) => {
 
         const hashedPassword = await bcrypt.hash(contrasena, 10);
 
-        await db.query("INSERT INTO usuarios (nombre_usuario, correo_usuario, contrasena) VALUES ($1, $2, $3);", [usuario, correo, hashedPassword]);
+        await db.query("INSERT INTO usuarios (nombre_usuario, correo_usuario, contrasena, rol) VALUES ($1, $2, $3, $4);", [usuario, correo, hashedPassword, rol]);
         return res.status(200).json({ mensaje: "Usuario creado con exito" });
 
     } catch (error) {
