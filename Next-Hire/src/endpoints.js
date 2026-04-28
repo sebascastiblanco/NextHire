@@ -3,6 +3,7 @@ import cors from "cors";
 import db from "./db/conexionDB.js";
 import registro from "./rutas/registrar.js";
 import inicio from "./rutas/inicio.js";
+import home from "./rutas/home.js";
 
 
 const app = express();
@@ -13,6 +14,8 @@ app.use(cors());
 
 //Rutas nuevas
 app.use(registro);
+app.use(inicio);
+app.use(home);
 
 //Conexion base de datos con el servidor
 const servidorConectado = async () => {
