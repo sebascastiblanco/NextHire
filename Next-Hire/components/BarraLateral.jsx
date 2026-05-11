@@ -35,7 +35,7 @@ function BarraLateral() {
                 <ul className="lista">
                     <li>Mensajes</li>
                     <li>Ofertas</li>
-                    <li>Documentos</li>
+                    <Link to="/documentos" className="mi-link"><li>Documentos</li></Link>
                     <li>Reclutadores</li>
                     <li>Configuración</li>
                 </ul>

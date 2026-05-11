@@ -4,6 +4,7 @@ import db from "./db/conexionDB.js";
 import registro from "./rutas/registrar.js";
 import inicio from "./rutas/inicio.js";
 import home from "./rutas/home.js";
+import documentos from "./rutas/documentos.js";
 
 
 const app = express();
@@ -16,6 +17,7 @@ app.use(cors());
 app.use(registro);
 app.use(inicio);
 app.use(home);
+app.use(documentos);
 
 //Conexion base de datos con el servidor
 const servidorConectado = async () => {

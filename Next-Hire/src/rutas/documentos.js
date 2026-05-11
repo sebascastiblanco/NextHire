@@ -3,7 +3,7 @@ import db from "../db/conexionDB.js";
 
 const router = express.Router();
 
-router.get("/home", async(req, res) => {
+router.get("/documentos", async(req, res) => {
     
 
 });

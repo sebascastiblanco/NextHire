@@ -19,7 +19,7 @@ function Inicio() {
         try {
 
             const revisarUsuario = await axios.post("http://localhost:3000/inicio", {
-                correo,
+                correo, 
                 contrasena
             });
 
@@ -27,6 +27,7 @@ function Inicio() {
 
                 if (revisarUsuario.status === 200) {
                     localStorage.setItem("auth", "true");
+                    localStorage.setItem('usuario', respuesta.usuario);
                     navigate("/home");
                     setError(false);
                     setMensaje(respuesta.mensaje);
